@@ -2,9 +2,17 @@ import ListGroup from "./components/ListGroup";
 
 function App() {
   // Each component in React has its own state. So in case we add one more  <ListGroup />, it will not act as the same as the first  <ListGroup />
+
+  let items = [
+    "New York",
+    "San Francisco",
+    "Philadelphia",
+    "Los Angeles",
+    "Paris",
+  ];
   return (
     <div>
-      <ListGroup />
+      <ListGroup items={items} heading="Cities" />
     </div>
   );
 }

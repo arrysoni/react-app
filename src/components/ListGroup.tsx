@@ -41,14 +41,17 @@
 
 // import { MouseEvent } from "react";
 import { useState } from "react";
-function ListGroup() {
-  let items = [
-    "New York",
-    "San Francisco",
-    "Philadelphia",
-    "Los Angeles",
-    "Paris",
-  ];
+
+// Let's create a list and <h1> in such a way that the user can input the values. We use an interface for this.
+// We need to pass an object with two property components: { items: [], heading: string }
+
+interface Props {
+  items: string[];
+  heading: string;
+}
+
+function ListGroup({ items, heading }: Props) {
+  // The items array has been moved to App.tsx
 
   // Hook: This is how we tell react that we our selectedIndex can have data or value that can change overtime.
   const [selectedIndex, setSelectedIndex] = useState(-1);
@@ -59,7 +62,7 @@ function ListGroup() {
 
   return (
     <>
-      <h1>List</h1>
+      <h1>{heading}</h1>
       {items.length === 0 && <p>No item found</p>}
       <ul className="list-group">
         {items.map((item, index) => (
