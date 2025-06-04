@@ -1,6 +1,7 @@
 // import ListGroup from "./components/ListGroup";
 
-import Alert from "./components/Alert";
+// import Alert from "./components/Alert";
+import Button from "./components/Button";
 
 function App() {
   // // Each component in React has its own state. So in case we add one more  <ListGroup />, it will not act as the same as the first  <ListGroup />
@@ -27,7 +28,11 @@ function App() {
         onSelectItem={handleSelectItem}
       /> */
 
-        <Alert>Hello World!</Alert>
+        // <Alert>Hello World!</Alert>
+
+        <Button color="danger" onClick={() => console.log("Clicked")}>
+          Aarya's Button
+        </Button>
       }
     </div>
   );
