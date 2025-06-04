@@ -45,12 +45,17 @@ import { useState } from "react";
 // Let's create a list and <h1> in such a way that the user can input the values. We use an interface for this.
 // We need to pass an object with two property components: { items: [], heading: string }
 
+// In the real world, we may need the list items to do something after it has been selected. We need to redirect the action to our App.tsx further.
+// We will define a function to do so.
+
 interface Props {
   items: string[];
   heading: string;
+  // (item: string) => void
+  onSelectItem: (item: string) => void; // Declaring this here gives error in App.tsx since we did not pass the prop there. Create an event hander handleSelectItem
 }
 
-function ListGroup({ items, heading }: Props) {
+function ListGroup({ items, heading, onSelectItem }: Props) {
   // The items array has been moved to App.tsx
 
   // Hook: This is how we tell react that we our selectedIndex can have data or value that can change overtime.
@@ -77,6 +82,7 @@ function ListGroup({ items, heading }: Props) {
             // onClick={handleClick} // On console, we get the type of the object as SyntheticBaseEvent which is a built in classes in React because different browsers have different implementations of event objects, so to make this cross browser, we have this class SyntheticBaseEvent (a wrapper around the native browser event object)
             onClick={() => {
               setSelectedIndex(index); // Despite making these changes, we are not able to get a highlighted version of our item. This is because our selectedIndex = 0 in local to our code. In order for it to change values when we click on a certain item, we need to use a 'Hook' called useState and import it as well.
+              onSelectItem(item);
             }}
           >
             {item}
